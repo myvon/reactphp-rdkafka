@@ -1,11 +1,11 @@
-# reactphp-file-system-watcher
+# reactphp-rdkafka
 RdKafka implementation with ReactPHP EventLoop.
 
 This library implement [PHP RDKafka](https://github.com/arnaud-lb/php-rdkafka) from [Arnaud-lb](https://github.com/arnaud-lb/) with [react/event-loop](https://github.com/reactphp/event-loop) and [react/stream](https://github.com/reactphp/stream) and provide a non-blocking event-driven Consumer and Producer.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/myvon/reactphp-rdkafka.svg?style=flat-square)](https://packagist.org/packages/myvon/reactphp-file-system-watcher)
-[![Tests](https://github.com/myvon/reactphp-rdkafka/actions/workflows/run-test.yml/badge.svg)](https://github.com/myvon/reactphp-file-system-watcher/actions/workflows/run-test.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/myvon/reactphp-rdkafka.svg?style=flat-square)](https://packagist.org/packagesmyvon/reactphp-file-system-watcher)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/myvon/reactphp-rdkafka.svg?style=flat-square)](https://packagist.org/packages/myvon/reactphp-rdkafka)
+[![Tests](https://github.com/myvon/reactphp-rdkafka/actions/workflows/run-test.yml/badge.svg)](https://github.com/myvon/reactphp-rdkafka/actions/workflows/run-test.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/myvon/reactphp-rdkafka.svg?style=flat-square)](https://packagist.org/packagesmyvon/reactphp-rdkafka)
 
 # How it works
 
