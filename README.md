@@ -5,7 +5,7 @@ This library implement [PHP RDKafka](https://github.com/arnaud-lb/php-rdkafka) f
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/myvon/reactphp-rdkafka.svg?style=flat-square)](https://packagist.org/packages/myvon/reactphp-rdkafka)
 [![Tests](https://github.com/myvon/reactphp-rdkafka/actions/workflows/run-test.yml/badge.svg)](https://github.com/myvon/reactphp-rdkafka/actions/workflows/run-test.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/myvon/reactphp-rdkafka.svg?style=flat-square)](https://packagist.org/packagesmyvon/reactphp-rdkafka)
+[![Total Downloads](https://img.shields.io/packagist/dt/myvon/reactphp-rdkafka.svg?style=flat-square)](https://packagist.org/packages/myvon/reactphp-rdkafka)
 
 # How it works
 
