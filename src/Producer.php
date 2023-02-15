@@ -12,7 +12,7 @@ use React\Stream\ThroughStream;
 class Producer
 {
     private Conf $conf;
-    private LoopInterface $loop;
+    private ?LoopInterface $loop;
     private ?\RdKafka\Producer $producer = null;
 
     /** @var TimerInterface[] */
@@ -34,9 +34,6 @@ class Producer
 
     public function __construct(Conf $conf, ?LoopInterface $loop = null)
     {
-        if(null === $loop) {
-            $loop = Loop::get();
-        }
         $this->conf = $conf;
         $this->loop = $loop;
     }
@@ -72,8 +69,11 @@ class Producer
      * @param string[] $topics
      * @return ThroughStream[]
      */
-    public function start(array $topics): array
+    public function start(array $topics, bool $useLoop = true): array
     {
+        if($useLoop && $this->loop === null) {
+            $this->loop = Loop::get();
+        }
         foreach($topics as $topic) {
             if(!isset($this->topics[$topic])) {
                 $this->topics[$topic] = $this->getProducer()->newTopic($topic);
@@ -93,10 +93,12 @@ class Producer
                     $this->getProducer()->flush($this->flushTimeout);
                 });
 
-                // Automatically poll every $this->pollInterval seconds
-                $this->timers[] = $this->loop->addPeriodicTimer($this->pollInterval, function () {
-                    $this->getProducer()->poll(1);
-                });
+                if($this->loop !== null) {
+                    // Automatically poll every $this->pollInterval seconds
+                    $this->timers[] = $this->loop->addPeriodicTimer($this->pollInterval, function () {
+                        $this->getProducer()->poll(1);
+                    });
+                }
             }
         }
 
