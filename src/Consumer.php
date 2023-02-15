@@ -119,7 +119,7 @@ class Consumer
             $message = $this->getConsumer()->consume($this->consumeTimeout);
             switch ($message->err) {
                 case RD_KAFKA_RESP_ERR_NO_ERROR:
-                    $this->getStream()->write($message->payload);
+                    $this->getStream()->write(['topic' => $message->topic_name, 'payload' => $message->payload]);
                     break;
                 // Don't trigger error on timeout or EOF
                 // TODO : add an option to allow user to choose to trigger an error or not

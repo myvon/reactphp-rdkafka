@@ -9,6 +9,7 @@ test("Test that consumer can consume", function() {
     $message = new \RdKafka\Message();
     $message->err = RD_KAFKA_RESP_ERR_NO_ERROR;
     $message->payload = "test";
+    $message->topic_name = "testTopic";
 
     $mock = mock(\RdKafka\KafkaConsumer::class);
     $mock->shouldReceive("subscribe")->withArgs([['testTopic']])->andReturnSelf();
@@ -30,7 +31,7 @@ test("Test that consumer can consume", function() {
 
     $this->loop->run();
 
-    expect($receivedData)->toEqual("test");
+    expect($receivedData)->toEqual(['topic' => 'testTopic', 'payload' => "test"]);
 });
 
 test("Test that ending consumer trigger end and close event from stream", function() {
