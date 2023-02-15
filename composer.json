@@ -1,0 +1,45 @@
+{
+    "name": "myvon/reactphp-rdkafka",
+    "authors": [
+        {
+            "name": "Morgan YVON",
+            "email": "morgan@elysaa.net"
+        }
+    ],
+	"description": "RdKafka Consumer and Producer implementation with ReactPHP Event Loop",
+    "type": "library",
+    "keywords": [
+        "myvon",
+        "file-system-watcher",
+        "reactphp-file-system-watcher",
+        "reactphp"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Myvon\\Kafka\\": "src/",
+            "Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "ext-rdkafka": "*",
+        "react/stream": "^1.2"
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.22",
+        "pestphp/pest-plugin-mock": "^1.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
