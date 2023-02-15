@@ -17,6 +17,7 @@ test("Test that consumer can consume", function() {
 
 
     $reflection = new ReflectionProperty($this->consumer, 'consumer');
+    $reflection->setAccessible(true);
     $reflection->setValue($this->consumer, $mock);
 
     $stream = $this->consumer->getStream();
@@ -69,6 +70,7 @@ test("Test that error on consumer works", function() {
 
 
     $reflection = new ReflectionProperty($this->consumer, 'consumer');
+    $reflection->setAccessible(true);
     $reflection->setValue($this->consumer, $mock);
 
     $stream = $this->consumer->getStream();

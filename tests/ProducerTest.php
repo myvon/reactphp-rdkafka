@@ -41,7 +41,8 @@ test('Test that the producer can gracefully close', function() {
         flush: fn($ms) => true,
     );
 
-    $reflection = new ReflectionProperty($this->producer, 'producer')   ;
+    $reflection = new ReflectionProperty($this->producer, 'producer');
+    $reflection->setAccessible(true);
     $reflection->setValue($this->producer, $mockKafkaProducer);
 
     $streams = $this->producer->start($topics);
@@ -71,6 +72,7 @@ test('Test that the producer can produce', function() {
     );
 
     $reflection = new ReflectionProperty($this->producer, 'producer');
+    $reflection->setAccessible(true);
     $reflection->setValue($this->producer, $mockKafkaProducer);
 
     $streams = $this->producer->start($topics);
