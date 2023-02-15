@@ -10,8 +10,9 @@
     "type": "library",
     "keywords": [
         "myvon",
-        "file-system-watcher",
-        "reactphp-file-system-watcher",
+        "rdkafka",
+        "kafka",
+        "reactphp-kafka",
         "reactphp"
     ],
     "license": "MIT",
