@@ -39,6 +39,13 @@ class Producer
     }
 
     /**
+     * Ensure that connection to kafka is gracefully closed (by calling poll and flush)
+     */
+    public function __destruct() {
+        $this->stop();
+    }
+
+    /**
      * Set timer between each poll()
      * @param float $pollInterval
      * @return $this
@@ -93,7 +100,7 @@ class Producer
                     $this->getProducer()->flush($this->flushTimeout);
                 });
 
-                if($this->loop !== null) {
+                if(null !== $this->loop) {
                     // Automatically poll every $this->pollInterval seconds
                     $this->timers[] = $this->loop->addPeriodicTimer($this->pollInterval, function () {
                         $this->getProducer()->poll(1);
@@ -115,6 +122,8 @@ class Producer
         foreach($this->timers as $timer) {
             $this->loop->cancelTimer($timer);
         }
+
+        $this->timers = []; // avoid canceling timers a second time when __destruct()
 
         foreach($this->streams as $stream) {
             $stream->end();
